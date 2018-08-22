@@ -11,4 +11,4 @@ install: vfioctl
 	chmod 4755 /usr/bin/vfioctl
 
 vfioctl: vfioctl.c
-	clang -O3 vfioctl.c -o vfioctl
+	gcc -O3 -Wall -Wextra -Wstrict-prototypes vfioctl.c -o vfioctl
