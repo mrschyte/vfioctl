@@ -136,7 +136,7 @@ char* vfctl_allowed[64];
 
 int vfio_allowed(const char* dev)
 {
-  for (int i = 0; i < countof(vfctl_allowed)
+  for (int i = 0; i < (int) countof(vfctl_allowed)
 	 && vfctl_allowed[i] != NULL; i++) {
 
     if (strcmp(dev, vfctl_allowed[i]) == 0)
@@ -243,7 +243,7 @@ int load_vfctl(char** vfctl)
   
   vfctl_allowed[0] = strtok(*vfctl, " \r\n");
 
-  for (int i = 1; i < countof(vfctl_allowed)
+  for (int i = 1; i < (int) countof(vfctl_allowed)
 	 && vfctl_allowed[i - 1] != NULL; i++) {
     vfctl_allowed[i] = strtok(NULL, " \r\n");
   }
@@ -252,7 +252,7 @@ _err:
   return errno;
 }
 
-void help() {
+void help(void) {
   puts("Usage:");
   puts("  vfioctl command device-ids");
   puts("  command :: bind, unbind");
